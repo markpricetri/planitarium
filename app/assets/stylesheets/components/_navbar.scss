@@ -1,6 +1,8 @@
 .navbar {
   justify-content: space-between;
   background-image: asset-url('space_gazing.jpg');
+  // linear-gradient: (135deg, rgba(100, 100, 100, 0.6), rgba(180, 180, 180, 0.8)),
+  //                   asset-url('space_gazing.jpg');
   background-size: cover;
   background-position: 50% 18%;
 
@@ -8,6 +10,7 @@
 
   a {
     text-decoration: none;
+    color: $mauve-text;
   }
 
   a:hover {
@@ -15,11 +18,12 @@
   }
 
   h1 {
+    color: $purple-text;
     font-family: $logo-font;
     padding-left: 24px;
     font-size: 5rem;
 
-    text-shadow: 3px 3px 5px rgba(180, 180, 180, 0.3)
+    text-shadow: 3px 3px 5px rgba(50, 50, 50, 0.6)
   }
 }
 
