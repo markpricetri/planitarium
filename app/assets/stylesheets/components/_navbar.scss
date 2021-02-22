@@ -1,12 +1,32 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
-  background: white;
+  background-image: asset-url('space_gazing.jpg');
+  background-size: cover;
+  background-position: 50% 18%;
+
+  height: 88px;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  h1 {
+    font-family: $logo-font;
+    padding-left: 24px;
+    font-size: 5rem;
+
+    text-shadow: 3px 3px 5px rgba(180, 180, 180, 0.3)
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-item {
+  padding-left: 24px;
 }
