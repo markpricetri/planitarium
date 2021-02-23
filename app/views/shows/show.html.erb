@@ -9,4 +9,10 @@
 
 <%= cl_image_tag @show.photo.key %>
 
+<% unless current_user.admin %>
+
+  <%= render '../bookings/form', show: @booking %>
+
+<% end %>
+
 <%= link_to "Back", shows_path %>
