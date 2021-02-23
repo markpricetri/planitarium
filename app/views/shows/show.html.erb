@@ -7,4 +7,6 @@
 
 <p>Capacity - <%= @show.capacity %> </p>
 
+<%= cl_image_tag @show.photo.key %>
+
 <%= link_to "Back", shows_path %>
