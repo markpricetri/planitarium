@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # Nested routes for bookings, i.e. /shows/:show_id/bookings...
     # TODO: decide if the index and show action here is just for admins???
     resources :bookings, only: [:index, :show, :new, :create]
+    resources :reviews, only: [:create, :show, :index]
   end
 
   # Root url is to the index of shows, regardless of user logged in or not
