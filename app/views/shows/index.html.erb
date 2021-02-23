@@ -1,17 +1,15 @@
 <h1>What's on</h1>
 
-<div class="container">
-  <div class="row">
-    <% @shows.each do |show| %>
-      <div class="col-4">
-        <%= link_to show_path(show) do %>
-          <div class="card" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>'); background-size: cover;">
-            <div class="card-body">
-              <h4 class="card-title"><%= show.name %></h4>
-            </div>
+<div class="row">
+  <% @shows.each do |show| %>
+    <div class="col-4">
+      <%= link_to show_path(show) do %>
+        <div class="card" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>'); background-size: cover;">
+          <div class="card-body">
+            <h4 class="card-title"><%= show.name %></h4>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
