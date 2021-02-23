@@ -1,9 +1,7 @@
 <h1><%= @show.name %></h1>
 
-<h3>
-  Start Time - <%= @show.start_time %>
-  Duration - 1 Hour
-</h3>
+<h3><strong>Start Time</strong> - <%= time_formatter(@show.start_time) %></h3>
+<p><strong>Duration</strong> - 1 Hour</p>
 
 <% booked = 0 %>
 <% Booking.where(show_id: @show.id) do |booking| %>
