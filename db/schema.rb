@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_162149) do
+ActiveRecord::Schema.define(version: 2021_02_23_142730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2021_02_22_162149) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "show_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["show_id"], name: "index_reviews_on_show_id"
+  end
+
   create_table "shows", force: :cascade do |t|
     t.string "name"
     t.integer "capacity"
@@ -74,5 +83,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_162149) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "shows"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "shows"
   add_foreign_key "shows", "users"
 end
