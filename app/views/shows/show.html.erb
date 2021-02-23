@@ -5,8 +5,17 @@
   Duration - 1 Hour
 </h3>
 
-<p>Capacity - <%= @show.capacity %> </p>
+<% booked = 0 %>
+<% Booking.where(show_id: @show.id) do |booking| %>
+  <% booked += booking.no_of_seats %>
+<% end %>
+
+<p>Available Seats - <%= @show.capacity - booked %></p>
 
 <%= cl_image_tag @show.photo.key %>
+
+<% if user_signed_in? %>
+  <%= link_to "Book Tickets", new_show_booking_path(@show) %>
+<% end %>
 
 <%= link_to "Back", shows_path %>
