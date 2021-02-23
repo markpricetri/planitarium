@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar">
-  <%= link_to root_path do %>
-    <h1>PLANET:523</h1>
-  <% end %>
+  <div>
+    <%= image_tag 'logo.png', id: 'nav-logo'%>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,9 +19,11 @@
           <%= link_to 'TODO', root_path, class: 'dropdown-item' %>
           <% if user_signed_in? %>
             <%= link_to 'Profile',  user_path(current_user), class: 'dropdown-item' %>
+            <%= link_to 'My Bookings', root_path, class: 'dropdown-item' %>
             <%= link_to 'Logout',  destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
           <% else %>
             <%= link_to 'Login',  new_user_session_path, class: 'dropdown-item' %>
+            <%= link_to 'Sign-up', new_user_registration_path %>
           <% end  %>
         </div>
       </li>
