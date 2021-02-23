@@ -1,0 +1,7 @@
+<div class="container">
+  <h1><%= "Book tickets for... " %></h1>
+
+  <%= render 'form', booking: @booking %>
+
+  <%= link_to 'Back to Show Details', show_path(params[:show_id]) %>
+</div>
