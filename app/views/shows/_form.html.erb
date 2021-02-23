@@ -4,7 +4,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :start_time %>
+    <%= f.input :start_time, collection: formify(Show::SHOWTIMES), label_method: :first, value_method: :second %>
     <%= f.input :capacity %>
     <%= f.input :photo, as: :file %>
   </div>
@@ -13,3 +13,5 @@
     <%= f.button :submit, class: 'btn btn-outline-light' %>
   </div>
 <% end %>
+
+
