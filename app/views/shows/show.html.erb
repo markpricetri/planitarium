@@ -1,50 +1,58 @@
-<h1><%= @show.name %></h1>
+<table>
+  <tr>
+    <td>
+      <%= cl_image_tag @show.photo.key, class: "avatar" %>
+    </td>
+    <td>
+      <h1><%= @show.name %></h1>
 
-<h3>
-  Start Time - <%= @show.start_time %>
-  Duration - 1 Hour
-</h3>
+      <h3>
+        Start Time - <%= @show.start_time %>
+        Duration - 1 Hour
+      </h3>
 
-<% booked = 0 %>
-<% Booking.where(show_id: @show.id) do |booking| %>
-  <% booked += booking.no_of_seats %>
-<% end %>
+      <% booked = 0 %>
+      <% Booking.where(show_id: @show.id) do |booking| %>
+        <% booked += booking.no_of_seats %>
+      <% end %>
 
-<p>Available Seats - <%= @show.capacity - booked %></p>
+      <p>Available Seats - <%= @show.capacity - booked %></p>
 
-<%= cl_image_tag @show.photo.key %>
 
-<% if user_signed_in? %>
-  <%= link_to "Book Tickets", new_show_booking_path(@show) %>
-<% end %>
+      <% if user_signed_in? %>
+        <%= link_to "Book Tickets", new_show_booking_path(@show) %>
+      <% end %>
 
-<div class="list-group">
-  <% @show.reviews.each do |review| %>
-    <li class="list-group-item">
-      <small>
-        <% count = 0 %>
-        <% 5.times do %>
-          <% if review.rating > count %>
-            <i class="fas fa-star"></i>
-          <% else %>
-            <i class="far fa-star"></i>
-          <% end %>
-          <% count += 1 %>
+      <div class="list-group">
+        <% @show.reviews.each do |review| %>
+          <li class="list-group-item">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.content %></p>
+          </li>
         <% end %>
-      </small>
-      <p><%= review.content %></p>
-    </li>
-  <% end %>
-</div>
+      </div>
 
 
-<%= simple_form_for [@show, @review] do |f| %>
-  <%= f.input :rating, collection: 0..5 %>
-  <%= f.input :content%>
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+      <%= simple_form_for [@show, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :content%>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
 
-<%= link_to "See all shows", shows_path %>
+      <%= link_to "See all shows", shows_path %>
 
 
-<%= link_to "Back", shows_path %>
+      <%= link_to "Back", shows_path %>
+    </td>
+  </tr>
+</table>
