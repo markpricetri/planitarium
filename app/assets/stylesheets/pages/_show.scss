@@ -1,7 +1,44 @@
+th, td {
+  vertical-align: top;
+}
+
 .avatar {
   width: 400px;
   height: 400px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 20px 100px 0 0
+  margin: 20px 100px 50px 0;
+  
+  border: 10px solid #2EC4B6;
+  box-shadow: 0 0 2px black;
+}
+
+
+
+.div-round {
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.div-round::before {
+	display: block;
+	content: "";
+}
+
+.iframe-round {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	width: 400px;
+	height: 400px;
+	border: 0;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+  border: 10px solid #2EC4B6;
 }
