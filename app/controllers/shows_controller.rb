@@ -5,7 +5,7 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
-    @reviews = Review.new
+    @review = Review.new
   end
 
   def new
