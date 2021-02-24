@@ -1,16 +1,25 @@
 <div class="container mb-3">
-  <div class="card">
-    <div class="card-header">
-      <h5>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <% if current_user.admin %>
-        <li class="list-group-item text-center"><strong>You are an Admin User</strong></li>
-      <% end %>
-      <li class="list-group-item">Name: <%= @user.first_name %> <%= @user.last_name %></li>
-      <li class="list-group-item">Email: <%= @user.email %></li>
-    </ul>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr><h5>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h5></tr>
+        <% if current_user.admin %>
+          <tr class="text-center"><strong>You are an Admin User</strong></tr>
+        <% end %>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name: </td>
+          <td><%= @user.first_name %> <%= @user.last_name %></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </div>
 <div class="container mb-3">
   <% if @bookings %>
