@@ -7,3 +7,30 @@
     <li class="list-group-item">Email: <%= @user.email %></li>
   </ul>
 </div>
+<h2>My Bookings</h2>
+<% if @bookings %>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Booking ID</th>
+          <th scope="col">Show Name</th>
+          <th scope="col">Show Time</th>
+          <th scope="col">No. of Tickets</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %></td>
+          <td><%= booking.show.name %></td>
+          <td><%= time_formatter(booking.show.start_time) %></td>
+          <td><%= booking.no_of_people %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <p>🙁 You don't seem to have any bookings</p>
+  </div>
+<% end %>
