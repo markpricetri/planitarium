@@ -1,2 +1,35 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.shows.index {
+  .navbar {
+    background-color: transparent ;
+    background-image: none;
+    transition: 0.5s background-color ease;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 10;
+    width: 100%;
+  }
+  .carousel {
+
+  }
+  .notice, .alert {
+    display: none;
+  }
+}
+
+.carousel-item {
+  height: 70vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  background-size: cover;
+  img {
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+  }
+}
+
+.row {
+  margin-top: 50px;
+}

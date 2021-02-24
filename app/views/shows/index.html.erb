@@ -2,18 +2,16 @@
   <div class="carousel-inner">
     <% @shows.each do |show| %>
       <% if Show.first == show %>
-        <div class="carousel-item active">
-          <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
+        <div class="carousel-item active" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
           <div class="carousel-caption d-none d-md-block">
-            <h5><%= show.name %></h5>
+            <h3><%= show.name %></h3>
             <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
           </div>
         </div>
       <% else %>
-        <div class="carousel-item">
-          <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.4)), url('<%= cl_image_path show.photo.key %>')">
           <div class="carousel-caption d-none d-md-block">
-            <h5><%= show.name %></h5>
+            <h3><%= show.name %></h3>
             <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
           </div>
         </div>
