@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.show = Show.find(params[:show_id])
     if @booking.save
       # redirects to the user's booking page for that booking if successful
-      redirect_to user_booking_path(@booking.user, @booking.id), notice: 'Booking Successful!'
+      redirect_to show_path(params[:show_id]), notice: 'Booking Successful!'
     else
       render :new
     end
