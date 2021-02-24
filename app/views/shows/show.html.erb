@@ -1,34 +1,3 @@
-<h1><%= @show.name %></h1>
-
-<h3><strong>Start Time</strong> - <%= time_formatter(@show.start_time) %></h3>
-<p><strong>Duration</strong> - 1 Hour</p>
-
-<% booked = 0 %>
-<% Booking.where(show_id: @show.id) do |booking| %>
-  <% booked += booking.no_of_seats %>
-<% end %>
-
-<p>Available Seats - <%= @show.capacity - booked %></p>
-
-<%= cl_image_tag @show.photo.key %>
-
-<% if user_signed_in? %>
-  <%= link_to "Book Tickets", new_show_booking_path(@show) %>
-<% end %>
-
-<div class="list-group">
-  <% @show.reviews.each do |review| %>
-    <li class="list-group-item">
-      <small>
-        <% count = 0 %>
-        <% 5.times do %>
-          <% if review.rating > count %>
-            <i class="fas fa-star"></i>
-          <% else %>
-            <i class="far fa-star"></i>
-          <% end %>
-          <% count += 1 %>
-
 <table>
   <tr>
     <td>
