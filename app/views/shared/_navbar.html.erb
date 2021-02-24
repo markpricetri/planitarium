@@ -1,6 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar">
   <div>
-    <%= image_tag 'logo.png', id: 'nav-logo'%>
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.png', id: 'nav-logo'%>
+    <% end %>
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,12 +12,25 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto hamburger-right">
-      <li class="nav-item active"><%= link_to 'Home', root_path %></li>
       <% if user_signed_in? %>
-        <li class="nav-item active"><%= link_to 'Profile',  user_path(current_user) %></li>
-        <li class="nav-item active"><%= link_to 'My Bookings', user_bookings_path(current_user) %></li>
+
+        <% if current_user.admin %>
+          <div class="dropdown">
+            <li class="nav-item active dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a href="#">Admin Actions</a>
+            </li>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" type="button"><%= link_to 'Create New Show', new_show_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to 'All Bookings', bookings_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to 'All Reviews', reviews_path %></button>
+            </div>
+          </div>
+        <% end %>
+
+        <li class="nav-item active"><%= link_to 'My Account',  user_path(current_user) %></li>
         <li class="nav-item active"><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
       <% else %>
+
         <li class="nav-item active"><%= link_to 'Login',  new_user_session_path %></li>
         <li class="nav-item active"><%= link_to 'Sign-up', new_user_registration_path %></li>
       <% end %>

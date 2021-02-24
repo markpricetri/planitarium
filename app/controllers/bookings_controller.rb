@@ -1,15 +1,7 @@
 class BookingsController < ApplicationController
   # Index action, where if current_user is admin, they can view ALL bookings for a show...
-  # where-as a non-admin user can only see the booking(s) they have made for a show
   def index
-    @my_bookings = Booking.where(user_id: current_user.id)
-
     @bookings = Booking.all if current_user.admin
-  end
-
-  # Show action to display details for an individual show.
-  def show
-    @booking = Booking.find(params[:id])
   end
 
   # New booking so that simple_form can create a form

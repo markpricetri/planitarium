@@ -1,7 +1,11 @@
-<div class="container">
-  <h1>New Show</h1>
+<div class="container flex-column">
+  <% if current_user.admin %>
 
-  <%= render 'form', show: @show %>
+    <h1>New Show</h1>
 
-  <%= link_to 'Back', shows_path %>
+    <%= render 'form', show: @show %>
+
+  <% else %>
+    <p><strong>Admins Only!</strong></p>
+  <% end %>
 </div>
