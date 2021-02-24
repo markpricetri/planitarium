@@ -6,13 +6,4 @@
     <li class="list-group-item">Name: <%= @user.first_name %> <%= @user.last_name %></li>
     <li class="list-group-item">Email: <%= @user.email %></li>
   </ul>
-  <div>
-    <ul>
-      <% @user.bookings.each do |booking| %>
-        <li><%= booking.show.name %></li>
-        <li><%= booking.show.start_time %></li>
-      <% end %>
-    </ul>
-  </div>
 </div>
-<p class="text-right p-0"><%= link_to "Edit", edit_user_path %></p>
