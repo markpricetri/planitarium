@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
-   def create
+  def index
+    @reviews = Review.all if current_user.admin
+  end
+
+  def create
     @show = Show.find(params[:show_id])
     @review = Review.new(review_params)
     @review.show = @show
@@ -8,6 +12,11 @@ class ReviewsController < ApplicationController
     else
       render "shows/show"
     end
+  end
+
+  def destroy
+    Review.destroy(params[:id])
+    redirect_to reviews_path, notice: 'Review successfully deleted'
   end
 
   private

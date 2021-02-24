@@ -2,20 +2,22 @@
   <div class="carousel-inner">
     <% @shows.each do |show| %>
       <% if Show.first == show %>
-        <div class="carousel-item active">
-          <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= show.name %></h5>
-            <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
-          </div>
+        <div class="carousel-item active" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
+          <%= link_to show_path(show) do %>
+            <div class="carousel-caption d-none d-md-block">
+              <h3><%= show.name %></h3>
+              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+            </div>
+          <% end %>
         </div>
       <% else %>
-        <div class="carousel-item">
-          <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= show.name %></h5>
-            <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
-          </div>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
+          <%= link_to show_path(show) do %>
+            <div class="carousel-caption d-none d-md-block">
+              <h3><%= show.name %></h3>
+              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+            </div>
+          <% end %>
         </div>
       <% end %>
     <% end %>
@@ -31,17 +33,30 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="cards">
     <% @shows.each do |show| %>
-      <div class="col-4">
-        <%= link_to show_path(show) do %>
-          <div class="card" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>'); background-size: cover;">
-            <div class="card-body">
-              <h4 class="card-title"><%= show.name %></h4>
+      <%= link_to show_path(show) do %>
+        <div class="card">
+          <div class="card-image" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>')">
+          </div>
+          <div class="card-content">
+            <h5 class="card-title"><%= show.name %></h5>
+            <div class="show-details">
+              <div class="show-time">
+                <p>Start time:</p>
+                <p><%= time_formatter(show.start_time) %></p>
+              </div>
+              <p class="show-availability">Seats left - 20</p>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
+</div>
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>

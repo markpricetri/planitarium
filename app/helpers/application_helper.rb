@@ -1,6 +1,8 @@
 module ApplicationHelper
   def formify(times_array)
-    return times_array.map { |time| ["#{time}:00", time] }
+    # return times_array.map { |time| ["#{time}:00", time] }
+    return times_array.map { |time| [time_formatter(time), time] }
+
   end
 
   def time_formatter(hour)

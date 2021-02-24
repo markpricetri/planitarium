@@ -1,9 +1,43 @@
-<div class="card" style="width: 32rem;">
-  <div class="card-header">
-    <h5>Your Account Details</h5>
+<div class="container mb-3">
+  <div class="card">
+    <div class="card-header">
+      <h5>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% if current_user.admin %>
+        <li class="list-group-item text-center"><strong>You are an Admin User</strong></li>
+      <% end %>
+      <li class="list-group-item">Name: <%= @user.first_name %> <%= @user.last_name %></li>
+      <li class="list-group-item">Email: <%= @user.email %></li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Name: <%= @user.first_name %> <%= @user.last_name %></li>
-    <li class="list-group-item">Email: <%= @user.email %></li>
-  </ul>
+</div>
+<div class="container mb-3">
+  <% if @bookings %>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr><h2>My Bookings</h2></tr>
+          <tr>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Show Name</th>
+            <th scope="col">Show Time</th>
+            <th scope="col">No. of Tickets</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.id %></td>
+            <td><%= link_to "#{booking.show.name}", show_path(booking.id) %></td>
+            <td><%= time_formatter(booking.show.start_time) %></td>
+            <td><%= booking.no_of_people %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+      <p>🙁 You don't seem to have any bookings</p>
+  <% end %>
 </div>

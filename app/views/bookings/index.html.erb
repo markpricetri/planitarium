@@ -1,63 +1,36 @@
-<h2>My Bookings</h2>
-<% if @my_bookings %>
-  <div class="table-container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Booking ID</th>
-          <th scope="col">Show Name</th>
-          <th scope="col">Show Time</th>
-          <th scope="col">No. of Tickets</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @my_bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.id %></td>
-          <td><%= booking.show.name %></td>
-          <td><%= time_formatter(booking.show.start_time) %></td>
-          <td><%= booking.no_of_people %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-<% else %>
-    <p>🙁 You don't seem to have any bookings</p>
-  </div>
-<% end %>
-
-<!-- Table below for admin users only -->
-
-<% if current_user.admin %>
-  <h2>Admin - All Bookings</h2>
-  <div class="table-container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Booker's ID</th>
-          <th scope="col">Booker's Name</th>
-          <th scope="col">Booker's Email</th>
-          <th scope="col">Booking ID</th>
-          <th scope="col">Show Name</th>
-          <th scope="col">Show Time</th>
-          <th scope="col">No. of Tickets</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.user.id %></td>
-          <td><%= "#{booking.user.last_name.upcase} #{booking.user.first_name.capitalize}" %></td>
-          <td><%= booking.user.email %></td>
-          <td><%= booking.id %></td>
-          <td><%= booking.show.name %></td>
-          <td><%= time_formatter(booking.show.start_time) %></td>
-          <td><%= booking.no_of_people %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-<% end %>
-
+<div class="container">
+  <% if current_user.admin %>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr><h2>All Bookings (Admin View)</h2></tr>
+          <tr>
+            <th scope="col">Booker's ID</th>
+            <th scope="col">Booker's Name</th>
+            <th scope="col">Booker's Email</th>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Show Name</th>
+            <th scope="col">Show Time</th>
+            <th scope="col">No. of Tickets</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.user.id %></td>
+            <td><%= "#{booking.user.last_name.upcase} #{booking.user.first_name.capitalize}" %></td>
+            <td><%= booking.user.email %></td>
+            <td><%= booking.id %></td>
+            <td><%= booking.show.name %></td>
+            <td><%= time_formatter(booking.show.start_time) %></td>
+            <td><%= booking.no_of_people %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p><strong>Admins Only!</strong></p>
+  <% end %>
+</div>
 

@@ -1,6 +1,14 @@
 class ShowsController < ApplicationController
   def index
     @shows = Show.all
+
+    @markers = @shows.geocoded.map do |show|
+      {
+        lat: show.latitude,
+        lng: show.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { show: show })
+      }
+    end
   end
 
   def show
