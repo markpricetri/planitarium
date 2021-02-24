@@ -6,7 +6,7 @@
           <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= show.name %></h5>
-            <p>Start time - <%= show.start_time %>:00 | Duration - 1 hour</p>
+            <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
           </div>
         </div>
       <% else %>
@@ -14,7 +14,7 @@
           <%= cl_image_tag show.photo.key, class: "d-block w-100" %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= show.name %></h5>
-            <p>Start time - <%= show.start_time %>:00 | Duration - 1 hour</p>
+            <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
           </div>
         </div>
       <% end %>
