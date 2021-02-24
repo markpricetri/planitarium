@@ -19,7 +19,13 @@ const initMapbox = () => {
         const markers = JSON.parse(mapElement.dataset.markers);
         markers.forEach((marker) => {
             const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-            new mapboxgl.Marker()
+            const element = document.createElement('div');
+            element.className = 'marker';
+            element.style.backgroundImage = `url('https://icons-for-free.com/iconfiles/png/512/flat+planet-1320109745923920928.png')`;
+            element.style.backgroundSize = 'contain';
+            element.style.width = '50px';
+            element.style.height = '50px';
+            new mapboxgl.Marker(element)
                 .setLngLat([marker.lng, marker.lat])
                 .setPopup(popup)
                 .addTo(map);
