@@ -1,0 +1,26 @@
+<% if current_user.admin %>
+  <h2>All Reviews (Admin View)</h2>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Review ID</th>
+          <th scope="col">Show Reviewed</th>
+          <th scope="col">Review Content</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.id %></td>
+          <td><%= review.show.name %></td>
+          <td><%= review.content %></td>
+          <td><%= link_to "🗑", review_path(review.id), method: "delete" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p><strong>Admins Only!</strong></p>
+<% end %>
