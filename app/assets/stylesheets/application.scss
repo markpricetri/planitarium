@@ -21,3 +21,7 @@
 html, body {
   height:100%;
 }
+
+.body-content {
+  min-height: calc(100vh - 154px);
+}
