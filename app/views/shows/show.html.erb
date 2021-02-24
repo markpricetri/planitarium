@@ -1,56 +1,74 @@
-<table>
-  <tr>
-    <td>
-      <%= cl_image_tag @show.photo.key, class: "avatar" %>
-    </td>
-    <td>
-      <h1><%= @show.name %></h1>
+<div class="container">
+  <table>
+    <tr>
+      <td>
+        <%= cl_image_tag @show.photo.key, class: "avatar" %>
+        
+        <style>
+</style>
 
-      <h3><strong>Start Time</strong> - <%= time_formatter(@show.start_time) %></h3>
-      <p><strong>Duration</strong> - 1 Hour</p>
-
-      <% booked = 0 %>
-      <% Booking.where(show_id: @show.id) do |booking| %>
-        <% booked += booking.no_of_seats %>
-      <% end %>
-
-      <p>Available Seats - <%= @show.capacity - booked %></p>
+<div class="div-round" style="width: 400px; height: 400px;">
+    <iframe class="iframe-round" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/DLOth-BuCNY?start=240"></iframe>
+</div>
 
 
-      <% if user_signed_in? %>
-        <%= link_to "Book Tickets", new_show_booking_path(@show) %>
-      <% end %>
+<%# https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1 %>
 
-      <div class="list-group">
-        <% @show.reviews.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.content %></p>
-          </li>
+        
+        
+        <%# <div style="padding:10px;background:#000;webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;width:560px;margin:0 auto;overflow:hidden;">
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"></iframe>
+        </div> %>
+      </td>
+      <td>
+        <h1><%= @show.name %></h1>
+
+        <h3><strong>Start Time</strong> - <%= time_formatter(@show.start_time) %></h3>
+        <p><strong>Duration</strong> - 1 Hour</p>
+
+        <% booked = 0 %>
+        <% Booking.where(show_id: @show.id) do |booking| %>
+          <% booked += booking.no_of_seats %>
         <% end %>
-      </div>
+
+        <p>Available Seats - <%= @show.capacity - booked %></p>
 
 
-      <%= simple_form_for [@show, @review] do |f| %>
-        <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :content%>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "Book Tickets", new_show_booking_path(@show) %>
+        <% end %>
 
-      <%= link_to "See all shows", shows_path %>
+        <div class="list-group">
+          <% @show.reviews.each do |review| %>
+            <li class="list-group-item">
+              <small>
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if review.rating > count %>
+                    <i class="fas fa-star"></i>
+                  <% else %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </small>
+              <p><%= review.content %></p>
+            </li>
+          <% end %>
+        </div>
 
 
-      <%= link_to "Back", shows_path %>
-    </td>
-  </tr>
-</table>
+        <%= simple_form_for [@show, @review] do |f| %>
+          <%= f.input :rating, collection: 0..5 %>
+          <%= f.input :content%>
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+
+        <%= link_to "See all shows", shows_path %>
+
+
+        <%= link_to "Back", shows_path %>
+      </td>
+    </tr>
+  </table>
+</div>
