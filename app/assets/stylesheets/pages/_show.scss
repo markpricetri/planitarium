@@ -42,3 +42,33 @@ th, td {
 	border-radius: 50%;
   border: 10px solid #2EC4B6;
 }
+
+
+
+.div-round-full {
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.div-round-full::before {
+	display: block;
+	content: "";
+}
+
+.iframe-round-full {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	width: 95vw;
+	height: 60vh;
+	border: 0;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+  border: 10px solid #2EC4B6;
+}
