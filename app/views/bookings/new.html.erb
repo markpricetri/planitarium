@@ -1,9 +1,9 @@
 <div class="container">
   <div class="table-container">
-    <h3><%= "Book tickets for... " %></h3>
+    <h3><%= "Book tickets for:" %></h3>
 
     <%= render 'form', booking: @booking %>
     <hr class="mb-3">
-    <%= link_to 'Back to Show Details', show_path(params[:show_id]) %>
+    <%= link_to 'Show Details', show_path(params[:show_id]) %>
   </div>
 </div>
