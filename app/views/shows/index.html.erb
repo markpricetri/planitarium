@@ -37,7 +37,7 @@
     <% @shows.each do |show| %>
       <%= link_to show_path(show) do %>
         <div class="card">
-          <div class="card-image" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>')">
+          <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>')">
           </div>
           <div class="card-content">
             <h5 class="card-title"><%= show.name %></h5>
