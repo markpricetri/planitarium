@@ -6,7 +6,7 @@
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
               <p class="text-light"><%= show.name %></p>
-              <p class="text-light">Start time - PUT IT IN HERE | Duration - 1 hour</p>
+              <p class="text-light">Next Showing: <%= next_show(show.showings) %> </p>
               <div class="big-button"><%= link_to "Book Now", show_path(show) %></div>
             </div>
           <% end %>
@@ -17,7 +17,7 @@
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
               <p class="text-light"><%= show.name %></p>
-              <p class="text-light">PUT IT IN HERE - </p>
+              <p class="text-light">Next Showing: <%= next_show(show.showings) %></p>
               <div class="big-button"><%= link_to "Book Now", show_path(show) %></div>
             </div>
           <% end %>
@@ -49,7 +49,7 @@
           <% end %>
           <div class="show-details">
             <div class="show-time">
-              <p>Start time: PUT IN HERE</p>
+              <p>Next Showing: <%= next_show(show.showings) %></p>
             </div>
             <p class="show-availability"> remaining seats </p>
           </div>

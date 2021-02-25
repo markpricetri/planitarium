@@ -11,6 +11,7 @@
             <th scope="col">Booking ID</th>
             <th scope="col">Show Name</th>
             <th scope="col">Show Time</th>
+            <th scope="col">Show Date</th>
             <th scope="col">No. of Tickets</th>
           </tr>
         </thead>
@@ -21,8 +22,9 @@
             <td><%= "#{booking.user.last_name.upcase} #{booking.user.first_name.capitalize}" %></td>
             <td><%= booking.user.email %></td>
             <td><%= booking.id %></td>
-            <td><%= booking.show.name %></td>
-            <td><%= time_formatter(booking.show.start_time) %></td>
+            <td><%= booking.showing.show.name %></td>
+            <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
+            <td><%= booking.showing.start_time.strftime("%m/%d/%Y") %></td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>

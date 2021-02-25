@@ -1,7 +1,9 @@
 class ShowsController < ApplicationController
   def index
     @shows = Show.all
-
+    @shows.each do |show|
+      @showings = Showing.where(show_id: show.id)
+    end
     @markers = @shows.geocoded.map do |show|
       {
         lat: show.latitude,
@@ -13,6 +15,7 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
+    @showings = Showing.where(show_id: @show.id)
     @review = Review.new
   end
 
