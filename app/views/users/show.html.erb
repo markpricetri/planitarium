@@ -2,15 +2,18 @@
   <div class="table-container">
     <table>
       <thead>
-        <tr><h5>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h5></tr>
-        <% if current_user.admin %>
-          <tr class="text-center"><strong>You are an Admin User</strong></tr>
+        <tr><h2>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h2></tr>
+        <% if @user.admin %>
+          <tr>
+            <td>Name: </td>
+            <td><%= @user.first_name %> <%= @user.last_name %></td>
+          </tr>
         <% end %>
       </thead>
       <tbody>
         <tr>
-          <td>Name: </td>
-          <td><%= @user.first_name %> <%= @user.last_name %></td>
+          <td>Admin: </td>
+          <td><%= @user.admin %></td>
         </tr>
         <tr>
           <td>Email: </td>
@@ -38,7 +41,7 @@
         <% @bookings.each do |booking| %>
           <tr>
             <td><%= booking.id %></td>
-            <td><%= link_to "#{booking.show.name}", show_path(booking.id) %></td>
+            <td><%= link_to "#{booking.show.name}", show_path(booking.show.id) %></td>
             <td><%= time_formatter(booking.show.start_time) %></td>
             <td><%= booking.no_of_people %></td>
           </tr>
