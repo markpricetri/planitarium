@@ -24,19 +24,28 @@
       </td>
       <td>
         <h1><%= @show.name %></h1>
-
-        <h3><strong>Start Time</strong> -</h3>
-        <p>Start Time - </p>
+        <hr>
+        <p><strong>Start Time - </strong></p>
+        <hr>
         <p><strong>Duration</strong> - 1 Hour</p>
+        <hr>
         <% if @show.reviews.count > 0 %>
           <% ratings = [] %>
           <% @show.reviews.each do |review| %>
             <% ratings << review.rating %>
           <% end %>
           <% average = ratings.sum / ratings.length %>
-          <p>Average Rating...</p>
-          <%= "⭐️" * average %>
+          <p class="mb-0"><strong>Average Rating</strong></p>
+          <div>
+            <% average.times do %>
+              <i class='fas fa-star mt-0'></i>
+            <% end %>
+            <% (5 - average).times do %>
+              <i class='far fa-star mt-0'></i>
+            <% end %>
+          </div>
         <% end %>
+        <hr>
 
         <p class="mt-4"> REMAINING SEATS </p>
 

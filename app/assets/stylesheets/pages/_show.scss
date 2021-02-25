@@ -8,8 +8,8 @@ th, td {
   border-radius: 50%;
   object-fit: cover;
   margin: 20px 100px 50px 0;
-  
-  border: 10px solid #2EC4B6;
+
+  border: 10px solid $green;
   box-shadow: 0 0 2px black;
 }
 
@@ -40,7 +40,7 @@ th, td {
 	border: 0;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
-  border: 10px solid #2EC4B6;
+  border: 10px solid $green;
 }
 
 
