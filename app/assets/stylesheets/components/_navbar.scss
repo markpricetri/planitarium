@@ -9,29 +9,49 @@
   background-position: 50% 18%;
 
   height: 88px;
-
-  h1 {
-    color: $purple-text;
-    padding-left: 24px;
-    font-size: 5rem;
-
-    text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.6)
-  }
+  margin-bottom: 24px;
 }
 
 .navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-#nav-logo {
- height: 88px;
-}
-
 .nav-item {
   padding-left: 24px;
 }
 
-.hamburger-right {
-  float: right;
-  text-align: right;
+.fa-get-pocket {
+  color: $green;
+  text-shadow: 0 0 3px $mainpurple;
+  font-size: 1.8rem;
+  margin-right: 24px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  #nav-logo {
+    height: 48px;
+  }
+  .nav-menu-right {
+    text-shadow: 1px 1px 1px rgba(5,5,5,0.2);
+    float: right;
+    text-align: right;
+    background-color: rgba(84, 88, 88,0.75);
+    border: 0.5px solid #00C8B6;
+    padding: 8px 16px 8px 16px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  #nav-logo {
+    height: 64px;
+  }
+}
+
+// Medium devices
+@media (min-width: 768px) {
+  #nav-logo {
+   height: 88px;
+  }
 }
