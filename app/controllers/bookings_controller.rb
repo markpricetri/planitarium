@@ -12,8 +12,9 @@ class BookingsController < ApplicationController
 
   # Create action to create a booking (from POST request)
   def create
+
     if user_signed_in?
-      @booking = Booking.new(no_of_people: params[:no_of_people].to_i)
+      @booking = Booking.new(no_of_people: booking_params[:no_of_people].to_i)
       @booking.user = current_user
       @booking.show = Show.find(params[:show_id])
       if @booking.save!

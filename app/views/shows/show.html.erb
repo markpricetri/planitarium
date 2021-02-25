@@ -26,7 +26,7 @@
       <td>
         <h1><%= @show.name %></h1>
 
-        <h3><strong>Start Time</strong> - <%= time_formatter(@show.start_time) %></h3>
+        <p>Start Time - <%= time_formatter(@show.start_time) %></p>
         <p><strong>Duration</strong> - 1 Hour</p>
         <% if @show.reviews.count > 0 %>
           <% ratings = [] %>

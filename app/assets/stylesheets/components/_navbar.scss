@@ -10,21 +10,8 @@
 
   height: 88px;
 
-  a {
-    text-decoration: none;
-    color: $tiffanyblue;
-    font-size: 20px;
-    text-shadow: 0.5px 0.5px 5px rgba(200, 200, 200, 0.3);
-  }
-
-  a:hover {
-    text-decoration: none;
-    opacity: 0.4;
-  }
-
   h1 {
     color: $purple-text;
-    font-family: $logo-font;
     padding-left: 24px;
     font-size: 5rem;
 
