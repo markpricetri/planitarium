@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       # redirects to the user's booking page for that booking if successful
       redirect_to user_path(current_user), notice: 'Booking Successful!'
     else
-      render :new
+      redirect_to new_user_session_path, notice: "Please log in or sign up to book!"
     end
   end
 

@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "../components/button"; 
 
 .shows.index {
   .navbar {
@@ -27,15 +28,20 @@
     min-height: 350px;
     background: no-repeat center center scroll;
     background-size: cover;
-    img {
-      background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+
+    p {
+      font-size: 1.8rem;
     }
   }
 
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
+    grid-gap: 24px;
+  }
+
+  .cards > a:hover {
+    text-decoration: none;
   }
 
   .card {
@@ -49,8 +55,8 @@
       padding: 16px;
       .show-details {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        flex-direction: column;
+        align-content: space-between;
         position: relative;
         margin-top: 30px;
         font-size: 15px;
@@ -61,8 +67,9 @@
       }
     }
     overflow: hidden;
-    background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    // background: linear-gradient(135deg, rgba(69,72,74,1),rgba(126,92,199,0.1));
+    background: linear-gradient(135deg, rgba(69,72,74,1),rgba(240,240,240,0.1));
+    box-shadow: 0 0 10px rgba(126,92,199,0.3);
     border-radius: 5px;
   }
 

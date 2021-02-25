@@ -1,19 +1,22 @@
 <div class="container mb-3">
   <div class="table-container">
-    <table>
+    <table class="table">
       <thead>
-        <tr><h5>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h5></tr>
-        <% if current_user.admin %>
-          <tr class="text-center"><strong>You are an Admin User</strong></tr>
-        <% end %>
+        <tr><h2>Your Account Details <%= link_to '✏️', edit_user_path(@user) %></h2></tr>
       </thead>
       <tbody>
         <tr>
-          <td>Name: </td>
+          <th>Name -</th>
           <td><%= @user.first_name %> <%= @user.last_name %></td>
         </tr>
+        <% if @user.admin %>
+          <tr>
+            <th>Admin -</th>
+            <td><%= @user.admin %></td>
+          </tr>
+          <% end %>
         <tr>
-          <td>Email: </td>
+          <th>Email -</th>
           <td><%= @user.email %></td>
         </tr>
       </tbody>
@@ -39,7 +42,7 @@
           <tr>
             <td><%= booking.id %></td>
             <td><%= link_to "#{booking.showing.show.name}", show_showing_path(booking.showing.show, booking.showing) %></td>
-            <td> Start time </td>
+            <td> Start time to be added! </td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>

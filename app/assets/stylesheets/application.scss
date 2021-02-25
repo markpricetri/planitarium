@@ -26,3 +26,60 @@ html, body {
 .body-content {
   min-height: calc(100vh - 154px);
 }
+
+.card-title-light-gray {
+  color: $light-gray;
+  text-shadow: 2px 2px 2px rgba(30, 30, 30, 0.3);
+}
+
+.nav-link-purple {
+  color: $mainpurple;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headers-font;
+  font-size: 2rem;
+  letter-spacing: 0.05rem;
+  color: $lightpurple;
+  font-weight: bolder;
+  text-shadow: 2px 2px 2px rgba(180, 180, 180, 0.2);
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  font-family: $body-font;
+  color: $light-gray;
+}
+
+label {
+  color: $light-gray;
+}
+
+a {
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  color: $tiffanyblue;
+  font-size: 1.8rem;
+  text-shadow: 0.5px 0.5px 3px rgba(200, 200, 200, 0.2);
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+td {
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  color: $light-gray;
+}
+
+th {
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  color: grey;
+}
