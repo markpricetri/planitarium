@@ -24,4 +24,13 @@ module ApplicationHelper
     remaining = showing.capacity - booked
     return remaining > 0 ? "Available Seats - #{remaining}" : "SOLD OUT!"
   end
+
+  def flash_class(level)
+    case level
+    when :notice then "alert alert-info"
+    when :success then "alert alert-success"
+    when :error then "alert alert-warning"
+    when :alert then "alert alert-danger"
+    end
+  end
 end
