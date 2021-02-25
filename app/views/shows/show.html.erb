@@ -8,7 +8,7 @@
     <tr>
       <td>
         <%= cl_image_tag @show.photo.key, class: "avatar" %>
-        
+
         <div class="div-round" style="width: 400px; height: 400px;">
             <iframe class="iframe-round" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
         </div>
@@ -38,7 +38,7 @@
           <%= "⭐️" * average %>
         <% end %>
 
-        <p class="mt-4"><%= remaining_seats(@show) %></p>
+        <p class="mt-4"> REMAINING SEATS </p>
 
 
         <%# if user_signed_in? && remaining_seats(@show) != 'SOLD OUT!' %>

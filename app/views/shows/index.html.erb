@@ -51,7 +51,7 @@
             <div class="show-time">
               <p>Start time: PUT IN HERE</p>
             </div>
-            <p class="show-availability"><%= remaining_seats(show) %></p>
+            <p class="show-availability"> remaining seats </p>
           </div>
         </div>
       </div>
@@ -64,5 +64,3 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<div class="big-button">Book Now</div>

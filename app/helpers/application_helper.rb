@@ -16,12 +16,12 @@ module ApplicationHelper
   end
 
   # remaining seats helper, where a string is returned indicating availability for a show
-  def remaining_seats(show)
+  def remaining_seats(showing)
     booked = 0
-    Booking.where(show_id: show.id).each do |booking|
+    Booking.where(showing_id: showing.id).each do |booking|
       booked += booking.no_of_people
     end
-    remaining = show.capacity - booked
+    remaining = showing.capacity - booked
     return remaining > 0 ? "Available Seats - #{remaining}" : "SOLD OUT!"
   end
 end
