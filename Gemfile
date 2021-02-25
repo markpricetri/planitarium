@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 gem 'geocoder'
 gem 'devise'
+gem "simple_calendar", "~> 2.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 # Use postgresql as the database for Active Record

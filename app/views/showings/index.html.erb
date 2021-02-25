@@ -1,0 +1,9 @@
+<%= month_calendar events: @showings do |date, showings| %>
+  <%= date %>
+
+  <% showings.each do |showing| %>
+    <div>
+      <%= link_to showing.start_time.strftime("%H:%M"), show_showing_path(params[:show_id], showing) %>
+    </div>
+  <% end %>
+<% end %>

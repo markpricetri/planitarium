@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   resources :shows, only: [:index, :show, :new, :create] do
     # Nested routes for bookings, i.e. /shows/:show_id/bookings...
     # TODO: decide if the index and show action here is just for admins???
-    resources :bookings, only: [:new, :create]
+    resources :showings, only: [:index, :show, :new, :create]
     resources :reviews, only: [:create, :show]
+  end
+  resources :showings, only: [] do
+    resources :bookings, only: [:new, :create]
   end
 
   # ADMIN only route to view all bookings
