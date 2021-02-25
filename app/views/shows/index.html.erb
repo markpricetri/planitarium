@@ -5,8 +5,11 @@
         <div class="carousel-item active" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
-              <h3><%= show.name %></h3>
-              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+              <p class="text-light"><%= show.name %></p>
+              <p class="text-light">Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+              <%= link_to new_show_booking_path(show) do %>
+                <h3>Book Now</h3>
+              <% end  %>
             </div>
           <% end %>
         </div>
@@ -14,8 +17,11 @@
         <div class="carousel-item" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
-              <h3><%= show.name %></h3>
-              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+              <p class="text-light"><%= show.name %></p>
+              <p class="text-light">Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+              <%= link_to new_show_booking_path(show) do %>
+                <h3>Book Now</h3>
+              <% end  %>
             </div>
           <% end %>
         </div>
@@ -46,7 +52,7 @@
                 <p>Start time:</p>
                 <p><%= time_formatter(show.start_time) %></p>
               </div>
-              <p class="show-availability">Seats left - 20</p>
+              <p class="show-availability"><%= remaining_seats(show) %></p>
             </div>
           </div>
         </div>

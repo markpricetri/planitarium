@@ -35,15 +35,10 @@
           <%= "⭐️" * average %>
         <% end %>
 
-        <% booked = 0 %>
-        <% Booking.where(show_id: @show.id) do |booking| %>
-          <% booked += booking.no_of_people %>
-        <% end %>
-
-        <p class="mt-4">Available Seats - <%= @show.capacity - booked %></p>
+        <p class="mt-4"><%= remaining_seats(@show) %></p>
 
 
-        <% if user_signed_in? %>
+        <% if user_signed_in? && remaining_seats(@show) != 'SOLD OUT!' %>
           <%= link_to "Book Tickets", new_show_booking_path(@show), class: "btn btn-success mb-4" %>
         <% end %>
 
