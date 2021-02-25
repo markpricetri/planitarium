@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <% @shows.each do |show| %>
       <% if Show.first == show %>
-        <div class="carousel-item active" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
+        <div class="carousel-item active" style="background-image: linear-gradient(to bottom, rgba(68,71,72,0.4), rgba(68,71,72,0.9)), url('<%= cl_image_path show.photo.key %>')">
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
               <p class="text-light"><%= show.name %></p>
@@ -12,7 +12,8 @@
           <% end %>
         </div>
       <% else %>
-        <div class="carousel-item" style="background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.7)), url('<%= cl_image_path show.photo.key %>')">
+
+        <div class="carousel-item" style="background-image: linear-gradient(to bottom, rgba(68,71,72,0.4), rgba(68,71,72,0.9)), url('<%= cl_image_path show.photo.key %>')">
           <%= link_to new_show_booking_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
               <p class="text-light"><%= show.name %></p>
@@ -37,22 +38,23 @@
 <div class="container">
   <div class="cards">
     <% @shows.each do |show| %>
-      <%= link_to show_path(show) do %>
-        <div class="card">
-          <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path show.photo.key %>')">
-          </div>
-          <div class="card-content">
-            <h5 class="card-title"><%= show.name %></h5>
-            <div class="show-details">
-              <div class="show-time">
-                <p>Start time:</p>
-                <p><%= time_formatter(show.start_time) %></p>
-              </div>
-              <p class="show-availability"><%= remaining_seats(show) %></p>
-            </div>
-          </div>
+      <div class="card">
+        <%= link_to show_path(show) do %>
+        <div class="card-image" style="background-image: linear-gradient(to bottom, rgba(68,71,72,0.4), rgba(68,71,72,0.8)), url('<%= cl_image_path show.photo.key %>')">
         </div>
       <% end %>
+        <div class="card-content">
+          <%= link_to show_path(show) do %>
+            <h3><%= show.name %></h3>
+          <% end %>
+          <div class="show-details">
+            <div class="show-time">
+              <p>Start time: <%= time_formatter(show.start_time) %></p>
+            </div>
+            <p class="show-availability"><%= remaining_seats(show) %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
