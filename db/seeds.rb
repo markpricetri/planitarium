@@ -8,6 +8,8 @@
 require 'open-uri'
 require 'json'
 
+Review.destroy_all
+Booking.destroy_all
 Show.destroy_all
 User.destroy_all
 
