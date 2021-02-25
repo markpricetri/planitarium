@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_114529) do
+ActiveRecord::Schema.define(version: 2021_02_25_165532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 2021_02_24_114529) do
   create_table "bookings", force: :cascade do |t|
     t.integer "no_of_people"
     t.bigint "user_id", null: false
-    t.bigint "show_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["show_id"], name: "index_bookings_on_show_id"
+    t.bigint "showing_id"
+    t.index ["showing_id"], name: "index_bookings_on_showing_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -55,16 +55,24 @@ ActiveRecord::Schema.define(version: 2021_02_24_114529) do
     t.index ["show_id"], name: "index_reviews_on_show_id"
   end
 
+  create_table "showings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.integer "capacity"
+    t.bigint "show_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["show_id"], name: "index_showings_on_show_id"
+  end
+
   create_table "shows", force: :cascade do |t|
     t.string "name"
-    t.integer "capacity"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "start_time"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.text "description"
     t.index ["user_id"], name: "index_shows_on_user_id"
   end
 
@@ -84,8 +92,9 @@ ActiveRecord::Schema.define(version: 2021_02_24_114529) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "shows"
+  add_foreign_key "bookings", "showings"
   add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "shows"
+  add_foreign_key "showings", "shows"
   add_foreign_key "shows", "users"
 end

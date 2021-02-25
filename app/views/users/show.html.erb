@@ -41,8 +41,8 @@
         <% @bookings.each do |booking| %>
           <tr>
             <td><%= booking.id %></td>
-            <td><%= link_to "#{booking.show.name}", show_path(booking.show.id) %></td>
-            <td><%= time_formatter(booking.show.start_time) %></td>
+            <td><%= link_to "#{booking.showing.show.name}", show_showing_path(booking.showing.show, booking.showing) %></td>
+            <td> Start time to be added! </td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>

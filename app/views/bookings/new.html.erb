@@ -4,6 +4,6 @@
 
     <%= render 'form', booking: @booking %>
     <hr class="mb-3">
-    <%= link_to 'Show Details', show_path(params[:show_id]) %>
+    <%= link_to 'Back to Show Details', show_showing_path(@showing.show, @showing) %>
   </div>
 </div>

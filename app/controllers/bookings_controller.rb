@@ -7,22 +7,18 @@ class BookingsController < ApplicationController
   # New booking so that simple_form can create a form
   def new
     @booking = Booking.new
-    @show = Show.find(params[:show_id])
+    @showing = Showing.find(params[:showing_id])
   end
 
   # Create action to create a booking (from POST request)
   def create
-
-    if user_signed_in?
-      @booking = Booking.new(no_of_people: booking_params[:no_of_people].to_i)
-      @booking.user = current_user
-      @booking.show = Show.find(params[:show_id])
-      if @booking.save!
-        # redirects to the user's booking page for that booking if successful
-        redirect_to show_path(params[:show_id]), notice: 'Booking Successful!'
-      else
-        render :new
-      end
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @showing = Showing.find(params[:showing_id])
+    @booking.showing = @showing
+    if @booking.save
+      # redirects to the user's booking page for that booking if successful
+      redirect_to user_path(current_user), notice: 'Booking Successful!'
     else
       redirect_to new_user_session_path, notice: "Please log in or sign up to book!"
     end

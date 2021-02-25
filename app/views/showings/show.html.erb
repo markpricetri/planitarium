@@ -1,0 +1,7 @@
+<%= @showing.show.name %>
+<%= @showing.capacity %>
+<%= @showing.start_time.strftime("%H:%M") %>
+
+<% if user_signed_in? %>
+  <%= link_to "Book Tickets", new_showing_booking_path(@showing), class: "btn btn-success mb-4" %>
+<% end %>

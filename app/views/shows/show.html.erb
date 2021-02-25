@@ -25,7 +25,8 @@
       <td>
         <h1><%= @show.name %></h1>
 
-        <p>Start Time - <%= time_formatter(@show.start_time) %></p>
+        <h3><strong>Start Time</strong> -</h3>
+        <p>Start Time - </p>
         <p><strong>Duration</strong> - 1 Hour</p>
         <% if @show.reviews.count > 0 %>
           <% ratings = [] %>
@@ -40,9 +41,9 @@
         <p class="mt-4"><%= remaining_seats(@show) %></p>
 
 
-        <% if user_signed_in? && remaining_seats(@show) != 'SOLD OUT!' %>
-          <%= link_to "Book Tickets", new_show_booking_path(@show), class: "btn btn-success mb-4" %>
-        <% end %>
+        <%# if user_signed_in? && remaining_seats(@show) != 'SOLD OUT!' %>
+          <%#= link_to "Book Tickets", new_show_booking_path(@show), class: "btn btn-success mb-4" %>
+        <%# end %>
 
         <div class="table-container mb-4">
           <div class="list-group" style="overflow:scroll; height:400px;">
@@ -80,3 +81,4 @@
     </tr>
   </table>
 </div>
+
