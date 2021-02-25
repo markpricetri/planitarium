@@ -52,7 +52,7 @@
                 <p>Start time:</p>
                 <p><%= time_formatter(show.start_time) %></p>
               </div>
-              <p class="show-availability">Seats left - 20</p>
+              <p class="show-availability"><%= remaining_seats(show) %></p>
             </div>
           </div>
         </div>
