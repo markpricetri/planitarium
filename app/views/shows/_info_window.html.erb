@@ -1,3 +1,3 @@
-<h2><%= show.name %></h2>
+<h2 style="text-decoration: none"><%= link_to show.name, show_path(show) %></h2>
 <p><%= show.address %></p>
-<p>Next show time: <strong> show starttime </strong></p>
+<p>Next Showing: <%= next_show(show.showings) %></p>

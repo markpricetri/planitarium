@@ -2,7 +2,6 @@ module ApplicationHelper
   def formify(times_array)
     # return times_array.map { |time| ["#{time}:00", time] }
     return times_array.map { |time| [time_formatter(time), time] }
-
   end
 
   # time formatter helper, where a string is returned depending on the hour integer arguement
@@ -25,6 +24,28 @@ module ApplicationHelper
     return remaining > 0 ? "Available Seats - #{remaining}" : "SOLD OUT!"
   end
 
+  def date_suffix(date)
+    day = date.strftime("%d").to_i
+    if day.between?(4, 20) || day.between?(24, 30)
+      return "th"
+    elsif [1, 21, 31].include?(day)
+      return "st"
+    elsif [2, 22].include?(day)
+      return "nd"
+    else
+      return "rd"
+    end
+  end
+
+  def next_show(showings)
+    dates = []
+    showings.each do |showing|
+      dates << showing.start_time
+    end
+    date = dates.sort_by { |date| (date - Time.now) }.first
+    return date.strftime("%a %-d#{date_suffix(date)} %b %Y")
+  end
+
   def flash_class(level)
     case level
     when :notice then "alert alert-info"
@@ -33,4 +54,5 @@ module ApplicationHelper
     when :alert then "alert alert-danger"
     end
   end
+
 end
