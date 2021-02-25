@@ -1,11 +1,11 @@
+
 <div class="container">
   <table>
     <tr>
       <td>
         <%= cl_image_tag @show.photo.key, class: "avatar" %>
 
-        <style>
-</style>
+
 
 <div class="div-round" style="width: 400px; height: 400px;">
     <iframe class="iframe-round" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/DLOth-BuCNY?start=240"></iframe>
@@ -43,7 +43,7 @@
         <% end %>
 
         <div class="table-container mb-4">
-          <div class="list-group">
+          <div class="list-group" style="overflow:scroll; height:400px;">
             <h3>Reviews...</h3>
             <% @show.reviews.each do |review| %>
               <li class="list-group-item">
