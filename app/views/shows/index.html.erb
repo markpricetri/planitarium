@@ -5,23 +5,20 @@
         <div class="carousel-item active" style="background-image: linear-gradient(to bottom, rgba(68,71,72,0.4), rgba(68,71,72,0.9)), url('<%= cl_image_path show.photo.key %>')">
           <%= link_to show_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
-              <p><%= show.name %></p>
-              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
-              <%= link_to new_show_booking_path(show) do %>
-                <h3>Book Now</h3>
-              <% end  %>
+              <p class="text-light"><%= show.name %></p>
+              <p class="text-light">Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
+              <div class="big-button"><%= link_to "Book Now", new_show_booking_path(show) %></div>
             </div>
           <% end %>
         </div>
       <% else %>
+
         <div class="carousel-item" style="background-image: linear-gradient(to bottom, rgba(68,71,72,0.4), rgba(68,71,72,0.9)), url('<%= cl_image_path show.photo.key %>')">
-          <%= link_to show_path(show) do %>
+          <%= link_to new_show_booking_path(show) do %>
             <div class="carousel-caption d-none d-md-block">
-              <p><%= show.name %></p>
-              <p>Start time - <%= time_formatter(show.start_time) %> | Duration - 1 hour</p>
-              <%= link_to new_show_booking_path(show) do %>
-                <h3>Book Now</h3>
-              <% end  %>
+              <p class="text-light"><%= show.name %></p>
+              <p class="text-light"><%= time_formatter(show.start_time) %> - <%= time_formatter(show.start_time + 1) %> </p>
+              <div class="big-button">Book Now</div>
             </div>
           <% end %>
         </div>
@@ -67,3 +64,5 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+<div class="big-button">Book Now</div>
