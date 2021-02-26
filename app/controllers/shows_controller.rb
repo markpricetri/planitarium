@@ -11,6 +11,10 @@ class ShowsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { show: show })
       }
     end
+    respond_to do |format|
+      format.html
+      format.json { render json: { shows: @shows } }
+    end
   end
 
   def show
