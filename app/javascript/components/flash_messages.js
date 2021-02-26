@@ -1,6 +1,6 @@
-const flash_messages = () => {
+const flashMessages = () => {
   const notice = document.querySelector('.alert-success')
 
 };
 
-export { flash_messages }
+export { flashMessages }

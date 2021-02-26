@@ -27,9 +27,9 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
-import { flash_messages } from '../components/flash_messages';
+import { flashMessages } from '../components/flash_messages';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
-  flash_messages();
+  flashMessages();
 });

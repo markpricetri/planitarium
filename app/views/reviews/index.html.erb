@@ -1,28 +1,59 @@
-<div class="container mb3">
-  <% if current_user.admin %>
-    <div class="table-container">
-      <table class="table">
-        <thead>
-          <tr><h2>All Reviews (Admin View)</h2></tr>
-          <tr>
-            <th scope="col">Review ID</th>
-            <th scope="col">Show Reviewed</th>
-            <th scope="col">Review Content</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @reviews.each do |review| %>
-          <tr>
-            <td><%= review.id %></td>
-            <td><%= review.show.name %></td>
-            <td><%= review.content %></td>
-            <td><%= link_to "🗑", review_path(review.id), method: "delete" %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  <% else %>
+<% if user_signed_in? && current_user.admin %>
+  <div class="container mb3">
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr><h2>Reviews Moderation</h2></tr>
+            <hr>
+            <%= form_tag reviews_path, method: :get do %>
+              <%= text_field_tag :query, params[:query], class: "form-control mb-3", placeholder: 'Search for offensive text...' %>
+              <%= submit_tag 'Search', class: 'mb-3' %>
+            <% end %>
+            <tr>
+              <th scope="col">Review ID</th>
+              <th scope="col">Show Reviewed</th>
+              <th scope="col">Review Content</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @results.each do |result| %>
+            <tr>
+              <td><%= result.id %></td>
+              <td><%= result.show.name %></td>
+              <td><%= result.content %></td>
+              <td><%= link_to "🗑", review_path(result.id), method: "delete", data: { confirm: 'Are you sure this review violates our terms?' } %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="container mt-4">
+      <div class="table-container" style="overflow:scroll; height:400px;">
+        <table class="table">
+          <thead>
+            <tr><h2>All Reviews</h2></tr>
+            <tr>
+              <th scope="col">Review ID</th>
+              <th scope="col">Show Reviewed</th>
+              <th scope="col">Review Content</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td><%= review.id %></td>
+              <td><%= review.show.name %></td>
+              <td><%= review.content %></td>
+              <td><%= link_to "🗑", review_path(review.id), method: "delete", data: { confirm: 'Are you sure this review violates our terms?' } %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+<% else %>
+  <div class="container">
     <p><strong>Admins Only!</strong></p>
-  <% end %>
-</div>
+  </div>
+<% end %>
