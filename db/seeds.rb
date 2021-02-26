@@ -43,7 +43,7 @@ milky_way.photo.attach(io: file, filename: 'milky_way.jpg', content_type: 'image
 
 rock_star = Show.create!( name: "Secret Rock Star", address: "Shoreditch Stables, North, 138 Kingsland Rd, London E2 8DY", user: marcel, description: description_rock_star)
 file = URI.open("https://source.unsplash.com/YFg5sDB3rZ4")
-pink_floyd.photo.attach(io: file, filename: 'pink_floyd.jpg', content_type: 'image/jpg')
+rock_star.photo.attach(io: file, filename: 'pink_floyd2.jpg', content_type: 'image/jpg')
 
 
 puts "created shows"
