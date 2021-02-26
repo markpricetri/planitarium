@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   # ADMIN only route to view all bookings
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index, :destroy]
 
   # ADMIN only routes to view all and delete individual reviews
   resources :reviews, only: [:index, :destroy]
