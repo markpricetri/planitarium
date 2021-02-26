@@ -36,6 +36,10 @@ milky_way = Show.create!( name: "Milky Way", address: "Tower of London, London E
 file = URI.open("https://source.unsplash.com/9wH624ALFQA")
 milky_way.photo.attach(io: file, filename: 'milky_way.jpg', content_type: 'image/jpg')
 
+milky_way_2 = Show.create!( name: "Milky Way", address: "Blackheath Avenue, Greenwhich, London, SE10 8XJ", user: ben, description: "Incredible  2nd show about space with really cool graphics and stuff")
+file = URI.open("https://source.unsplash.com/9wH624ALFQA")
+milky_way_2.photo.attach(io: file, filename: 'milky_way.jpg', content_type: 'image/jpg')
+
 puts "created shows"
 puts "creating showings"
 

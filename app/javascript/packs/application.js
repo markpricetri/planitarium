@@ -33,3 +33,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   flash_messages();
 });
+
+import "controllers"
