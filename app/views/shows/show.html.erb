@@ -91,7 +91,7 @@
   </table>
 </div>
 
-<% if current_user.admin %>
+<% if user_signed_in? && current_user.admin %>
   <%= link_to "Create A New Showing", new_show_showing_path(@show) %>
 <% end %>
 
