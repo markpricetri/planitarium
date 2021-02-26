@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "controllers"
 
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
@@ -32,11 +33,9 @@ import { flashMessages } from '../components/flash_messages';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 
-  flash_messages();
+  // flash_messages();
   if (location.search.includes("start_date")) {
     $("#exampleModal").modal("show")
   }
 });
-
-import "controllers"
 
