@@ -48,10 +48,12 @@
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>
+         <td class="align-right"><%= link_to "Back to shows", shows_path  %></td>
         </tbody>
       </table>
     </div>
   <% else %>
       <p>🙁 You don't seem to have any bookings</p>
+      <td class="align-right"><%= link_to "Back to shows", shows_path  %></td>
   <% end %>
 </div>
