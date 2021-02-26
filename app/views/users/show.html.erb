@@ -34,6 +34,7 @@
             <th scope="col">Booking ID</th>
             <th scope="col">Show Name</th>
             <th scope="col">Show Time</th>
+            <th scope="col">Show Date</th>
             <th scope="col">No. of Tickets</th>
           </tr>
         </thead>
@@ -42,7 +43,8 @@
           <tr>
             <td><%= booking.id %></td>
             <td><%= link_to "#{booking.showing.show.name}", show_showing_path(booking.showing.show, booking.showing) %></td>
-            <td> Start time to be added! </td>
+            <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
+            <td><%= booking.showing.start_time.strftime("%a %-d#{date_suffix(booking.showing.start_time)} %B %Y") %></td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>

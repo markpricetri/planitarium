@@ -1,9 +1,11 @@
-<%= month_calendar events: @showings do |date, showings| %>
-  <%= date %>
+<!-- <div id="showings" class="container"> -->
+  <%= month_calendar events: @showings do |date, showings| %>
+    <%= date.strftime("%d") %>
 
-  <% showings.each do |showing| %>
-    <div>
-      <%= link_to showing.start_time.strftime("%H:%M"), show_showing_path(params[:show_id], showing) %>
-    </div>
+    <% showings.each do |showing| %>
+      <div id="showing">
+        <%= link_to showing.start_time.strftime("%H:%M"), show_showing_path(params[:show_id], showing) %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+<!-- </div> -->

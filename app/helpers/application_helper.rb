@@ -46,6 +46,15 @@ module ApplicationHelper
     return date.strftime("%a %-d#{date_suffix(date)} %b %Y")
   end
 
+  def next_show_date(showings)
+    dates = []
+    showings.each do |showing|
+      dates << showing.start_time
+    end
+    date = dates.sort_by { |date| (date - Time.now) }.first
+    return date
+  end
+
   def flash_class(level)
     case level
     when :notice then "alert alert-info"
