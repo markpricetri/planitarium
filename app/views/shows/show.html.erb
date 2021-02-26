@@ -25,9 +25,13 @@
       <td>
         <h1><%= @show.name %></h1>
         <hr>
-        <p><strong>Start Time - </strong></p>
+        <p>Description - <%= @show.description %> </p>
         <hr>
         <p><strong>Duration</strong> - 1 Hour</p>
+        <hr>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Open Calendar to Book
+        </button>
         <hr>
         <% if @show.reviews.count > 0 %>
           <% ratings = [] %>
@@ -95,22 +99,30 @@
   </table>
 </div>
 
-<% if current_user.admin %>
-  <%= link_to "Create A New Showing", new_show_showing_path(@show) %>
-<% end %>
+<!-- Create a new Showing for Admin -->
+<%# if user_signed_in? && current_user.admin %>
+  <%#= link_to "Create A New Showing", new_show_showing_path(@show) %>
+<%# end %>
 
-<div class="calendar">
-    <%= month_calendar events: @showings do |date, showings| %>
-      <%= date.strftime("%d") %>
-
-      <% showings.each do |showing| %>
-        <div id="showing">
-          <%= showing.start_time.strftime("%H:%M") %>
-          <% if user_signed_in? %>
-            <%= link_to "Book", new_showing_booking_path(showing), class: "btn btn-success mb-4" %>
-          <% end %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> <%= @show.name %> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="showings-calendar">
+          <%= render partial: "calendar", locals: {showings: @showings} %>
         </div>
-      <% end %>
-    <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
+</div>
 

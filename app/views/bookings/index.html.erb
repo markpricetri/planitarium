@@ -1,38 +1,79 @@
-<div class="container">
-  <% if current_user.admin %>
+<% if user_signed_in? && current_user.admin %>
+  <div class="container mb3">
     <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr><h2>Booking Search</h2></tr>
+          <hr>
+          <%= form_tag bookings_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], class: "form-control mb-3", placeholder: 'Search by Booking Ref...' %>
+            <%= submit_tag 'Search', class: 'mb-3' %>
+          <% end %>
+          <tr>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Booker's ID</th>
+            <th scope="col">Booker's Name</th>
+            <th scope="col">Booker's Email</th>
+            <th scope="col">Show Name</th>
+            <th scope="col">Show Date</th>
+            <th scope="col">Show Time</th>
+            <th scope="col">No. of Tickets</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @results.each do |result| %>
+          <tr>
+            <td><%= result.id %></td>
+            <td><%= result.user.id %></td>
+            <td><%= "#{result.user.last_name.upcase} #{result.user.first_name.capitalize}" %></td>
+            <td><%= result.user.email %></td>
+            <td><%= result.showing.show.name %></td>
+            <td><%= result.showing.start_time.strftime("%a %-d#{date_suffix(result.showing.start_time)} %B %Y") %></td>
+            <td><%= result.showing.start_time.strftime("%H:%M") %></td>
+            <td><%= result.no_of_people %></td>
+            <td><%= link_to "🗑", booking_path(result.id), method: "delete", data: { confirm: 'Are you sure this booking requires cancellation?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="table-container" style="overflow:scroll; height:700px;">
       <table class="table">
         <thead>
           <tr><h2>All Bookings (Admin View)</h2></tr>
           <tr>
+            <th scope="col">Booking ID</th>
             <th scope="col">Booker's ID</th>
             <th scope="col">Booker's Name</th>
             <th scope="col">Booker's Email</th>
-            <th scope="col">Booking ID</th>
             <th scope="col">Show Name</th>
-            <th scope="col">Show Time</th>
             <th scope="col">Show Date</th>
+            <th scope="col">Show Time</th>
             <th scope="col">No. of Tickets</th>
           </tr>
         </thead>
         <tbody>
         <% @bookings.each do |booking| %>
           <tr>
+            <td><%= booking.id %></td>
             <td><%= booking.user.id %></td>
             <td><%= "#{booking.user.last_name.upcase} #{booking.user.first_name.capitalize}" %></td>
             <td><%= booking.user.email %></td>
-            <td><%= booking.id %></td>
             <td><%= booking.showing.show.name %></td>
-            <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
             <td><%= booking.showing.start_time.strftime("%a %-d#{date_suffix(booking.showing.start_time)} %B %Y") %></td>
+            <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-  <% else %>
+  </div>
+<% else %>
+  <div class="container">
     <p><strong>Admins Only!</strong></p>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
