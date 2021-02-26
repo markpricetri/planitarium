@@ -1,8 +1,15 @@
 class BookingsController < ApplicationController
   # Index action, where if current_user is admin, they can view ALL bookings for a show...
   def index
-    @bookings = Booking.all
-    @results = Booking.search_by_id(params[:query])
+    if params[:query].present?
+      @results = Booking.search_by_id(params[:query])
+    else
+      @results = Booking.all
+    end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   # New booking so that simple_form can create a form
@@ -25,6 +32,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    @showings = Showing.where(show_id: @booking.showing.show_id)
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to bookings_path, success: 'Booking amended successfully'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     if Booking.destroy(params[:id])
       redirect_to bookings_path, success: 'Booking successfully deleted'
@@ -43,6 +64,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:no_of_people)
+    params.require(:booking).permit(:no_of_people, :showing_id)
   end
 end

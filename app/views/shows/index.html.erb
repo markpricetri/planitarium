@@ -7,7 +7,7 @@
             <div class="carousel-caption d-none d-md-block">
               <h1><%= show.name %></h1>
               <p>Next Showing: <%= next_show(show.showings) %></p>
-              <div class="big-button"><%= link_to "Book Now", show_path(show) %></div>
+              <div><%= link_to "Book Now", show_path(show), id: "call-to-action" %></div>
             </div>
           <% end %>
         </div>
@@ -18,7 +18,7 @@
             <div class="carousel-caption d-none d-md-block">
               <h1><%= show.name %></h1>
               <p>Next Showing: <%= next_show(show.showings) %></p>
-              <div class="big-button"><%= link_to "Book Now", show_path(show) %></div>
+              <div><%= link_to "Book Now", show_path(show), id: "call-to-action" %></div>
             </div>
           <% end %>
         </div>
