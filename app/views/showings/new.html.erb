@@ -4,6 +4,7 @@
       <%= simple_form_for [@show, @showing] do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <h1>New Showing for <%= @show.name %> </h1>
 
         <div class="form-inputs">
           <%= f.input :capacity %>
