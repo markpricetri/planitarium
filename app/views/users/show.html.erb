@@ -42,7 +42,7 @@
         <% @bookings.each do |booking| %>
           <tr>
             <td><%= booking.id %></td>
-            <td><%= link_to "#{booking.showing.show.name}", show_showing_path(booking.showing.show, booking.showing) %></td>
+            <td><%= link_to "#{booking.showing.show.name}", show_path(booking.showing.show) %></td>
             <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
             <td><%= booking.showing.start_time.strftime("%a %-d#{date_suffix(booking.showing.start_time)} %B %Y") %></td>
             <td><%= booking.no_of_people %></td>
