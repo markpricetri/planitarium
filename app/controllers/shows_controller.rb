@@ -11,6 +11,10 @@ class ShowsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { show: show })
       }
     end
+    respond_to do |format|
+      format.html
+      format.json { render json: { shows: @shows } }
+    end
   end
 
   def show
@@ -27,7 +31,7 @@ class ShowsController < ApplicationController
     @show = Show.new(show_params)
     @show.user = current_user
     if @show.save
-      redirect_to show_path(@show), notice: 'Show successfully created'
+      redirect_to new_show_showing_path(@show), notice: 'Show successfully created'
     else
       render :new
     end

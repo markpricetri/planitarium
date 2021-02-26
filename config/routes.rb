@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :show]
   end
   resources :showings, only: [] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show]
   end
 
   # ADMIN only route to view all bookings
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index, :destroy]
 
   # ADMIN only routes to view all and delete individual reviews
   resources :reviews, only: [:index, :destroy]

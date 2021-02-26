@@ -45,6 +45,7 @@ rock_star = Show.create!( name: "Secret Rock Star", address: "Shoreditch Stables
 file = URI.open("https://source.unsplash.com/YFg5sDB3rZ4")
 pink_floyd.photo.attach(io: file, filename: 'pink_floyd.jpg', content_type: 'image/jpg')
 
+
 puts "created shows"
 puts "creating showings"
 
