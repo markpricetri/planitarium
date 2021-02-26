@@ -27,7 +27,7 @@ class ShowsController < ApplicationController
     @show = Show.new(show_params)
     @show.user = current_user
     if @show.save
-      redirect_to show_path(@show), notice: 'Show successfully created'
+      redirect_to new_show_showing_path(@show), notice: 'Show successfully created'
     else
       render :new
     end
