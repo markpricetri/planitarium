@@ -1,6 +1,6 @@
 <% if user_signed_in? && current_user.admin %>
   <div class="container mb3">
-      <div class="table-container">
+      <div class="table-container" style="overflow:scroll; max-height:600px;">
         <table class="table">
           <thead>
             <tr><h2>Reviews Moderation</h2></tr>
@@ -22,30 +22,6 @@
               <td><%= result.show.name %></td>
               <td><%= result.content %></td>
               <td><%= link_to "🗑", review_path(result.id), method: "delete", data: { confirm: 'Are you sure this review violates our terms?' } %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-  </div>
-  <div class="container mt-4">
-      <div class="table-container" style="overflow:scroll; height:400px;">
-        <table class="table">
-          <thead>
-            <tr><h2>All Reviews</h2></tr>
-            <tr>
-              <th scope="col">Review ID</th>
-              <th scope="col">Show Reviewed</th>
-              <th scope="col">Review Content</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @reviews.each do |review| %>
-            <tr>
-              <td><%= review.id %></td>
-              <td><%= review.show.name %></td>
-              <td><%= review.content %></td>
-              <td><%= link_to "🗑", review_path(review.id), method: "delete", data: { confirm: 'Are you sure this review violates our terms?' } %></td>
             </tr>
           <% end %>
           </tbody>

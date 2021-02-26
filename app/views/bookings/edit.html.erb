@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="table-container">
+    <h3>Amend Booking</h3>
+    <p>Booking for:<br> - <%= "#{@booking.user.first_name} #{@booking.user.last_name}" %></p>
+    <p>Show:<br> - <%= @booking.showing.show.name %></p>
+    <p>Currently Booked: <br> ID - <%= @booking.showing.id %> <br> <%= @booking.showing.start_time.strftime('%c') %></p>
+    <%= simple_form_for @booking do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :showing_id, collection: @showings.ids %>
+        <%= f.input :no_of_people %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: 'form-submit' %>
+      </div>
+        <%= link_to 'Back to All Bookings', bookings_path, class: 'form-submit' %>
+    <% end %>
+  </div>
+  <div class="table-container" style="overflow:scroll; max-height:600px;">
+        <table class="table">
+          <thead>
+            <tr><h2><%= @booking.showing.show.name %> Showings</h2></tr>
+            <hr>
+            <tr>
+              <th scope="col">Date/Time</th>
+              <th scope="col">Showing ID</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @showings.each do |showing| %>
+            <tr>
+              <td><%= showing.start_time.strftime('%c') %></td>
+              <td><%= showing.id %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+</div>

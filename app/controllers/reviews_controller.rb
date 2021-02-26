@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
-    @results = Review.search_by_content(params[:query])
+    if params[:query].present?
+      @results = Review.search_by_content(params[:query])
+    else
+      @results = Review.all
+    end
   end
 
   def create
