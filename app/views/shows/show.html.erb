@@ -59,30 +59,34 @@
         <%# end %>
 
         <div class="table-container mb-4">
-          <div class="list-group" style="overflow:scroll; height:400px;">
-            <h3>Reviews...</h3>
-            <% @show.reviews.each do |review| %>
-              <li class="list-group-item">
-                <small>
-                  <% count = 0 %>
-                  <% 5.times do %>
-                    <% if review.rating > count %>
-                      <i class="fas fa-star"></i>
-                    <% else %>
-                      <i class="far fa-star"></i>
+          <div id="reviews" class="list-group" style="overflow:scroll; height:400px;">
+            <% if @show.reviews.blank? %>
+              <p>Be the first to leave a review for <%= @show.name %></p>
+            <% else %>
+              <h3>Reviews...</h3>
+              <% @show.reviews.reverse.each do |review| %>
+                <li class="list-group-item">
+                  <small>
+                    <% count = 0 %>
+                    <% 5.times do %>
+                      <% if review.rating > count %>
+                        <i class="fas fa-star"></i>
+                      <% else %>
+                        <i class="far fa-star"></i>
+                      <% end %>
+                      <% count += 1 %>
                     <% end %>
-                    <% count += 1 %>
-                  <% end %>
-                </small>
-                <p><%= review.content %></p>
-              </li>
+                  </small>
+                  <p id="review-<% review.id %>"><%= review.content %></p>
+                </li>
+              <% end %>
             <% end %>
           </div>
         </div>
 
         <% if user_signed_in? %>
           <div class="table-container">
-            <%= simple_form_for [@show, @review] do |f| %>
+            <%= simple_form_for([@show, @review], remote: true) do |f| %>
               <h3>Leave a review</h3>
               <%= f.input :rating, collection: 0..5 %>
               <%= f.input :content%>
