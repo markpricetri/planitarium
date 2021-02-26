@@ -7,7 +7,7 @@
         <%# <div class="div-round" style="width: 400px; height: 400px;">
             <iframe class="iframe-round" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
         </div> %>
-        
+
         <%# https://www.youtube.com/embed/DLOth-BuCNY?start=240 %>
 
 <%# https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1 %>
@@ -21,14 +21,22 @@
       <td>
         <h1><%= @show.name %></h1>
         <hr>
+
         <p><%= @show.description %> </p>
+
         <hr>
         <p><strong>Duration</strong> - 1 Hour</p>
         <hr>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" id="calendar-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Open Calendar to Book
         </button>
         <hr>
+
+        <% if user_signed_in? && current_user.admin %>
+          <%= link_to "Create A New Showing", new_show_showing_path(@show) %>
+          <hr>
+        <% end %>
+
         <% if @show.reviews.count > 0 %>
           <% ratings = [] %>
           <% @show.reviews.each do |review| %>
@@ -46,9 +54,6 @@
           </div>
         <% end %>
         <hr>
-
-        <p class="mt-4"> REMAINING SEATS </p>
-
 
         <%# if user_signed_in? && remaining_seats(@show) != 'SOLD OUT!' %>
           <%#= link_to "Book Tickets", new_show_booking_path(@show), class: "btn btn-success mb-4" %>
@@ -97,14 +102,9 @@
 
 <div class="container">
   <div class="div-round-full" style="width: 1000px; height: 600px;">
-    <iframe class="iframe-round-full" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
+    <iframe class="iframe-round-full" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1460&modestbranding=1&autohide=1&showinfo=0"></iframe>
   </div>
 </div>
-
-<!-- Create a new Showing for Admin -->
-<%# if user_signed_in? && current_user.admin %>
-  <%#= link_to "Create A New Showing", new_show_showing_path(@show) %>
-<%# end %>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

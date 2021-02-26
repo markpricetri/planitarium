@@ -16,10 +16,11 @@ User.destroy_all
 
 puts "creating users"
 
-matt = User.create!(email: "matt@planitarium.com", password: "mattsmith", first_name: "Matt", last_name: "Smith")
+matt = User.create!(email: "matt@planitarium.com", password: "mattsmith", first_name: "Matt", last_name: "Smith", admin: true)
 ben = User.create!(email: "ben@planitarium.com", password: "benskingsley", first_name: "Ben", last_name: "Skingsley")
 marcel = User.create!(email: "marcel@planitarium.com", password: "marcelmeyer", first_name: "Marcel", last_name: "Meyer")
 mark = User.create!(email: "mark@planitarium.com", password: "markprice", first_name: "Mark", last_name: "Price")
+test_user = User.create!(email: "test@test.com", password: "123456", first_name: "John", last_name: "Smith")
 
 puts "created users"
 puts "creating shows"
@@ -41,7 +42,7 @@ milky_way = Show.create!( name: "Milky Way", address: "Tower of London, London E
 file = URI.open("https://source.unsplash.com/9wH624ALFQA")
 milky_way.photo.attach(io: file, filename: 'milky_way.jpg', content_type: 'image/jpg')
 
-rock_star = Show.create!( name: "Secret Rock Star", address: "Shoreditch Stables, North, 138 Kingsland Rd, London E2 8DY", user: marcel, description: description_rock_star)
+rock_star = Show.create!( name: "Secret Rock Star", address: "138 Kingsland Rd, London E2 8DY", user: marcel, description: description_rock_star)
 file = URI.open("https://source.unsplash.com/YFg5sDB3rZ4")
 rock_star.photo.attach(io: file, filename: 'pink_floyd2.jpg', content_type: 'image/jpg')
 
