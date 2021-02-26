@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.show = @show
     if @review.save!
-      redirect_to show_path(@show)
+      redirect_to show_path(@show, anchor: "reviews")
     else
       render "shows/show"
     end
