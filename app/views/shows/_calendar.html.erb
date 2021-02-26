@@ -1,0 +1,12 @@
+<%= month_calendar events: showings do |date, showings| %>
+  <%= date.strftime("%d") %>
+
+  <% showings.each do |showing| %>
+    <div id="showing">
+      <%= showing.start_time.strftime("%H:%M") %>
+      <% if user_signed_in? %>
+        <%= link_to "Book", new_showing_booking_path(showing), class: "btn btn-success mb-4" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

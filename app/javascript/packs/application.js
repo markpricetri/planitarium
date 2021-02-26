@@ -31,5 +31,10 @@ import { flashMessages } from '../components/flash_messages';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
-  flashMessages();
+
+  flash_messages();
+  if (location.search.includes("start_date")) {
+    $("#exampleModal").modal("show")
+  }
 });
+

@@ -33,6 +33,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    @booking = Booking.find(params[:booking_id])
+    @showing = @booking.showing
+    @show = @showing.show
+    @shows = Show.all
+  end
+
   private
 
   def booking_params
