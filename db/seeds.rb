@@ -24,17 +24,26 @@ mark = User.create!(email: "mark@planitarium.com", password: "markprice", first_
 puts "created users"
 puts "creating shows"
 
-pink_floyd = Show.create!( name: "Dark side of the Moon", address: "10 Downing Street, London", user: matt, description: "Incredible show about space with really cool graphics and stuff")
+description_planets = "A planetarium show which explores our cosmic neighbours through the eyes of space probes."
+description_pink_floyd = "A music show with amazing visual effects including laser projections."
+description_milky_way = "There are 200 billion stars in home galaxy. One is our sun, but how much do we know about the remaining 199.999.999.999 stars of the milky way? Let's find out!"
+description_rock_star = "Meet your favourite Bands under the stars including an incredible laser show. This events takes place every month on a diffenrent location. If you want to find out who is performing this time, just click on preview video."
+
+pink_floyd = Show.create!( name: "Dark side of the Moon", address: "10 Downing Street, London", user: matt, description: description_pink_floyd)
 file = URI.open("https://source.unsplash.com/YFg5sDB3rZ4")
 pink_floyd.photo.attach(io: file, filename: 'pink_floyd.jpg', content_type: 'image/jpg')
 
-planets = Show.create!( name: "Planets", address: "Buckingham Palace, London SW1A 1AA", user: marcel, description: "Incredible show about space with really cool graphics and stuff")
+planets = Show.create!( name: "Planets", address: "Buckingham Palace, London SW1A 1AA", user: marcel, description: description_planets)
 file = URI.open("https://source.unsplash.com/RF4p4rTM-2s")
 planets.photo.attach(io: file, filename: 'planets.jpg', content_type: 'image/jpg')
 
-milky_way = Show.create!( name: "Milky Way", address: "Tower of London, London EC3N 4AB", user: ben, description: "Incredible show about space with really cool graphics and stuff")
+milky_way = Show.create!( name: "Milky Way", address: "Tower of London, London EC3N 4AB", user: ben, description: description_milky_way)
 file = URI.open("https://source.unsplash.com/9wH624ALFQA")
 milky_way.photo.attach(io: file, filename: 'milky_way.jpg', content_type: 'image/jpg')
+
+rock_star = Show.create!( name: "Secret Rock Star", address: "Shoreditch Stables, North, 138 Kingsland Rd, London E2 8DY", user: marcel, description: description_rock_star)
+file = URI.open("https://source.unsplash.com/YFg5sDB3rZ4")
+pink_floyd.photo.attach(io: file, filename: 'pink_floyd.jpg', content_type: 'image/jpg')
 
 puts "created shows"
 puts "creating showings"
@@ -45,6 +54,8 @@ date3 = DateTime.new(2021, 3, 4, 12, 00)
 date4 = DateTime.new(2021, 3, 5, 14, 00)
 date5 = DateTime.new(2021, 3, 6, 16, 00)
 date6 = DateTime.new(2021, 3, 7, 18, 00)
+date7 = DateTime.new(2021, 3, 8, 20, 00)
+
 
 showing1 = Showing.create!( start_time: date1, capacity: 40, show: pink_floyd)
 showing2 = Showing.create!( start_time: date2, capacity: 40, show: pink_floyd)
@@ -52,6 +63,7 @@ showing3 = Showing.create!( start_time: date3, capacity: 40, show: planets)
 showing4 = Showing.create!( start_time: date4, capacity: 40, show: milky_way)
 showing5 = Showing.create!( start_time: date5, capacity: 40, show: milky_way)
 showing6 = Showing.create!( start_time: date6, capacity: 40, show: milky_way)
+showing7 = Showing.create!( start_time: date7, capacity: 28, show: rock_star)
 
 puts "created showings"
 puts "creating bookings"
@@ -74,6 +86,6 @@ review1 = Review.create!( show: planets, content: "Good show, enjoyed it!", rati
 review1 = Review.create!( show: milky_way, content: "Goof show, enjoyed it!", rating: 4)
 review1 = Review.create!( show: pink_floyd, content: "Awful show, avoid!", rating: 2)
 review1 = Review.create!( show: planets, content: "Waste of money!!", rating: 1)
+review1 = Review.create!( show: rock_star, content: "Saw a making of on TV. If this show is only half as good as people say it is, I'll definitely try to get tickets!", rating: 5)
 
 puts "reviews created"
-

@@ -1,17 +1,13 @@
-<%# <div class="container">  %>
-  <%# <div class="div-round-full" style="width: 95vw; height: 60vh;">
-      <iframe class="iframe-round-full" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
-  </div> %>
-<%# </div> %>
 <div class="container">
   <table>
     <tr>
       <td>
         <%= cl_image_tag @show.photo.key, class: "avatar" %>
 
-        <div class="div-round" style="width: 400px; height: 400px;">
+        <%# <div class="div-round" style="width: 400px; height: 400px;">
             <iframe class="iframe-round" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
-        </div>
+        </div> %>
+        
         <%# https://www.youtube.com/embed/DLOth-BuCNY?start=240 %>
 
 <%# https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1 %>
@@ -89,6 +85,12 @@
       </td>
     </tr>
   </table>
+</div>
+
+<div class="container">
+  <div class="div-round-full" style="width: 1000px; height: 600px;">
+    <iframe class="iframe-round-full" allow="autoplay; encrypted-media; fullscreen" src="https://www.youtube.com/embed/vW1NH64UnJk?controls=0&start=1454&modestbranding=1&autohide=1&showinfo=0"></iframe>
+  </div>
 </div>
 
 <% if user_signed_in? && current_user.admin %>
