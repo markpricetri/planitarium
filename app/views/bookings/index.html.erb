@@ -24,7 +24,7 @@
             <td><%= booking.id %></td>
             <td><%= booking.showing.show.name %></td>
             <td><%= booking.showing.start_time.strftime("%H:%M") %></td>
-            <td><%= booking.showing.start_time.strftime("%m/%d/%Y") %></td>
+            <td><%= booking.showing.start_time.strftime("%a %-d#{date_suffix(booking.showing.start_time)} %B %Y") %></td>
             <td><%= booking.no_of_people %></td>
           </tr>
         <% end %>

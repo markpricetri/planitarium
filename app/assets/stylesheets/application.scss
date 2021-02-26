@@ -101,3 +101,37 @@ th {
 hr {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.simple-calendar {
+  .day {
+    text-align: left;
+    #showing {
+      text-align: center;
+    }
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {background: grey;}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    background: transparent;
+    color: transparent;
+  }
+  .next-month {display: none}
+  .current-month {}
+
+  .has-events {}
+}
+
+

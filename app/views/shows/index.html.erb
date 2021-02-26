@@ -51,7 +51,7 @@
             <div class="show-time">
               <p>Next Showing: <%= next_show(show.showings) %></p>
             </div>
-            <p class="show-availability"> remaining seats </p>
+            <p class="show-availability"> <%= remaining_seats(Showing.where(start_time: next_show_date(show.showings), show: show).first) %> </p>
           </div>
         </div>
       </div>

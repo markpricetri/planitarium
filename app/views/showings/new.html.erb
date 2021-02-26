@@ -1,15 +1,21 @@
-<div class="table-container">
-  <%= simple_form_for [@show, @showing] do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="container">
+ <% if current_user.admin %>
+    <div class="table-container">
+      <%= simple_form_for [@show, @showing] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <%= f.input :capacity %>
-      <%= f.input :start_time, as: :datetime, html5: true %>
-    </div>
+        <div class="form-inputs">
+          <%= f.input :capacity %>
+          <%= f.input :start_time, as: :datetime, html5: true %>
+        </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, class: 'btn btn-outline-light' %>
+        <div class="form-actions">
+          <%= f.button :submit, class: 'btn btn-outline-light' %>
+        </div>
+      <% end %>
     </div>
+  <% else %>
+    <p><strong>Admins Only!</strong></p>
   <% end %>
 </div>

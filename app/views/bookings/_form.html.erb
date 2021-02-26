@@ -1,6 +1,7 @@
 <div>
   <%= simple_form_for [@showing, @booking] do |f| %>
     <h3><%= "#{@showing.show.name}" %></h3>
+    <p> <%= @showing.start_time.strftime("%H:%M %a %-d#{date_suffix(@showing.start_time)} %b %Y") %> </p>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
